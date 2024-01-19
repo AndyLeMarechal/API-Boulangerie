@@ -1,6 +1,6 @@
 -- Revert migrations:Our_Bakery from pg
 
 BEGIN;
-DROP TABLE IF EXISTS "our_bakery";
+DROP TABLE "our_bakery" CASCADE;
 
 COMMIT;

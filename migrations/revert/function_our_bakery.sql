@@ -2,6 +2,7 @@
 
 BEGIN;
 
--- XXX Add DDLs here.
+DROP FUNCTION insert_our_bakery;
+DROP FUNCTION updated_our_bakery;
 
 COMMIT;
