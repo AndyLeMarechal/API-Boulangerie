@@ -2,8 +2,8 @@
 
 BEGIN;
 
-TRUNCATE "pains";
-TRUNCATE "pâtisserie";
-TRUNCATE "viennoiserie";
-TRUNCATE "côté_salé";
+TRUNCATE "breads";
+TRUNCATE "pastries";
+TRUNCATE "breakfast_pastry";
+TRUNCATE "salty_side";
 COMMIT;

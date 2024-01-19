@@ -3,58 +3,58 @@
 BEGIN;
 
 
-CREATE TABLE "pains" (
+CREATE TABLE "breads" (
     "id" int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "title" text NOT NULL UNIQUE,
     "description" text NOT NULL UNIQUE,
     "img" TEXT,
     "price" numeric NOT NULL,
-    "mode_de_conservation" text NOT NULL ,
+    "method_of_conservation" text NOT NULL ,
     "composition" text NOT NULL ,
-    "valeurs_nutritionnelles" text NOT NULL ,
-    "allergènes" text NOT NULL ,
+    "nutritional_values" text NOT NULL ,
+    "allergens" text NOT NULL ,
     "created_at" timestamptz NOT NULL DEFAULT now(),
     "updated_at" timestamptz 
 );
 
-CREATE TABLE "pâtisserie" (
+CREATE TABLE "pastries" (
     "id" int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "title" text NOT NULL UNIQUE,
     "description" text NOT NULL UNIQUE,
     "img" TEXT,
     "price" numeric NOT NULL,
-    "mode_de_conservation" text NOT NULL ,
+    "method_of_conservation" text NOT NULL ,
     "composition" text NOT NULL ,
-    "valeurs_nutritionnelles" text NOT NULL ,
-    "allergènes" text NOT NULL ,
+    "nutritional_values" text NOT NULL ,
+    "allergens" text NOT NULL ,
     "created_at" timestamptz NOT NULL DEFAULT now(),
     "updated_at" timestamptz 
 );
 
-CREATE TABLE "viennoiserie" (
+CREATE TABLE "breakfast_pastry" (
     "id" int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "title" text NOT NULL UNIQUE,
     "description" text NOT NULL UNIQUE,
     "img" TEXT,
     "price" numeric NOT NULL,
-    "mode_de_conservation" text NOT NULL ,
+    "method_of_conservation" text NOT NULL ,
     "composition" text NOT NULL ,
-    "valeurs_nutritionnelles" text NOT NULL ,
-    "allergènes" text NOT NULL ,
+    "nutritional_values" text NOT NULL ,
+    "allergens" text NOT NULL ,
     "created_at" timestamptz NOT NULL DEFAULT now(),
     "updated_at" timestamptz
 );
 
-CREATE TABLE "côté_salé" (
+CREATE TABLE "salty_side" (
     "id" int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "title" text NOT NULL UNIQUE,
     "description" text NOT NULL UNIQUE,
     "img" TEXT,
     "price" numeric NOT NULL,
-    "mode_de_conservation" text NOT NULL ,
+    "method_of_conservation" text NOT NULL ,
     "composition" text NOT NULL ,
-    "valeurs_nutritionnelles" text NOT NULL ,
-    "allergènes" text NOT NULL ,
+    "nutritional_values" text NOT NULL ,
+    "allergens" text NOT NULL ,
     "created_at" timestamptz NOT NULL DEFAULT now(),
     "updated_at" timestamptz 
 );

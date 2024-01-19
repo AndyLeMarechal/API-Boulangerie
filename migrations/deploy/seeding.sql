@@ -1,17 +1,18 @@
+
 -- Deploy migrations:seeding to pg
 
 BEGIN;
 
-INSERT INTO "pains"
+INSERT INTO "breads"
     (
         "title",
         "description",
         "img",
         "price",
-        "mode_de_conservation",
+        "method_of_conservation",
         "composition",
-        "valeurs_nutritionnelles",
-        "allergènes"
+        "nutritional_values",
+        "allergens"
     )
 VALUES 
     (
@@ -55,16 +56,16 @@ VALUES
         'Gluten. Fabriqué dans un atelier utilisant fruits à coque, lait, œuf, sésame.'
     );
 
-INSERT INTO "pâtisserie"
+INSERT INTO "pastries"
     (
         "title",
         "description",
         "img",
         "price",
-        "mode_de_conservation",
+        "method_of_conservation",
         "composition",
-        "valeurs_nutritionnelles",
-        "allergènes"
+        "nutritional_values",
+        "allergens"
     )
 VALUES 
     (
@@ -108,16 +109,16 @@ VALUES
         'Gluten, lait, œuf, soja, sulfites. Fabriqué dans un atelier utilisant fruits à coque, sésame.'
     );
 
-INSERT INTO "viennoiserie"
+INSERT INTO "breakfast_pastry"
     (
         "title",
         "description",
         "img",
         "price",
-        "mode_de_conservation",
+        "method_of_conservation",
         "composition",
-        "valeurs_nutritionnelles",
-        "allergènes"
+        "nutritional_values",
+        "allergens"
     )
 VALUES 
     (
@@ -161,16 +162,16 @@ VALUES
         'Gluten, lait, œuf. Fabriqué dans un atelier utilisant arachides, fruits à coque, lait, gluten, œuf, sésame, soja, sulfites.'
     );
 
-INSERT INTO "côté_salé"
+INSERT INTO "salty_side"
     (
         "title",
         "description",
         "img",
         "price",
-        "mode_de_conservation",
+        "method_of_conservation",
         "composition",
-        "valeurs_nutritionnelles",
-        "allergènes"
+        "nutritional_values",
+        "allergens"
     )
 VALUES 
     (

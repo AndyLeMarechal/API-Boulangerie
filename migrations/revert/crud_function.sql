@@ -2,20 +2,20 @@
 
 BEGIN;
 
-DROP FUNCTION insert_pains;
+DROP FUNCTION insert_breads;
 
-DROP FUNCTION updated_pains;
+DROP FUNCTION updated_breads;
 
-DROP FUNCTION insert_pâtisserie;
+DROP FUNCTION insert_pastries;
 
-DROP FUNCTION updated_pâtisserie;
+DROP FUNCTION updated_pastries;
 
-DROP FUNCTION insert_viennoiserie;
+DROP FUNCTION insert_breakfast_pastry;
 
-DROP FUNCTION updated_viennoiserie;
+DROP FUNCTION updated_breakfast_pastry;
 
-DROP FUNCTION insert_côté_salé;
+DROP FUNCTION insert_salty_side;
 
-DROP FUNCTION updated_côté_salé;
+DROP FUNCTION updated_salty_side;
 
 COMMIT;

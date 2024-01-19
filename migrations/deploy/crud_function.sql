@@ -2,18 +2,18 @@
 
 BEGIN;
 
-CREATE OR REPLACE FUNCTION insert_pains("data" json) RETURNS pains AS $$
+CREATE OR REPLACE FUNCTION insert_breads("data" json) RETURNS breads AS $$
 
-    INSERT INTO pains
+    INSERT INTO breads
     (
         title,
         description,
         img,
         price,
-        mode_de_conservation,
+        method_of_conservation,
         composition,
-		valeurs_nutritionnelles,
-		allergènes
+		nutritional_values,
+		allergens
     )
     VALUES
     (
@@ -21,26 +21,26 @@ CREATE OR REPLACE FUNCTION insert_pains("data" json) RETURNS pains AS $$
         data->>'description',
         data->>'img',
         (data->>'price')::numeric,
-        data->>'mode_de_conservation',
+        data->>'method_of_conservation',
         data->>'composition',
-		data->>'valeurs_nutritionnelles',
-        data->>'allergènes'
+		data->>'nutritional_values',
+        data->>'allergens'
     )
 RETURNING *;
 $$ LANGUAGE sql STRICT;
 
-CREATE OR REPLACE FUNCTION insert_pâtisserie("data" json) RETURNS pâtisserie AS $$
+CREATE OR REPLACE FUNCTION insert_pastries("data" json) RETURNS pastries AS $$
 
-    INSERT INTO pâtisserie
+    INSERT INTO pastries
     (
         title,
         description,
         img,
         price,
-        mode_de_conservation,
+        method_of_conservation,
         composition,
-		valeurs_nutritionnelles,
-		allergènes
+		nutritional_values,
+		allergens
     )
     VALUES
     (
@@ -48,26 +48,26 @@ CREATE OR REPLACE FUNCTION insert_pâtisserie("data" json) RETURNS pâtisserie A
         data->>'description',
         data->>'img',
         (data->>'price')::numeric,
-        data->>'mode_de_conservation',
+        data->>'method_of_conservation',
         data->>'composition',
-		data->>'valeurs_nutritionnelles',
-        data->>'allergènes'
+		data->>'nutritional_values',
+        data->>'allergens'
     )
 RETURNING *;
 $$ LANGUAGE sql STRICT;
 
-CREATE OR REPLACE FUNCTION insert_viennoiserie("data" json) RETURNS viennoiserie AS $$
+CREATE OR REPLACE FUNCTION insert_breakfast_pastry("data" json) RETURNS breakfast_pastry AS $$
 
-    INSERT INTO viennoiserie
+    INSERT INTO breakfast_pastry
     (
         title,
         description,
         img,
         price,
-        mode_de_conservation,
+        method_of_conservation,
         composition,
-		valeurs_nutritionnelles,
-		allergènes
+		nutritional_values,
+		allergens
     )
     VALUES
     (
@@ -75,26 +75,26 @@ CREATE OR REPLACE FUNCTION insert_viennoiserie("data" json) RETURNS viennoiserie
         data->>'description',
         data->>'img',
         (data->>'price')::numeric,
-        data->>'mode_de_conservation',
+        data->>'method_of_conservation',
         data->>'composition',
-		data->>'valeurs_nutritionnelles',
-        data->>'allergènes'
+		data->>'nutritional_values',
+        data->>'allergens'
     )
 RETURNING *;
 $$ LANGUAGE sql STRICT;
 
-CREATE OR REPLACE FUNCTION insert_côté_salé("data" json) RETURNS côté_salé AS $$
+CREATE OR REPLACE FUNCTION insert_salty_side("data" json) RETURNS salty_side AS $$
 
-    INSERT INTO côté_salé
+    INSERT INTO salty_side
     (
         title,
         description,
         img,
         price,
-        mode_de_conservation,
+        method_of_conservation,
         composition,
-		valeurs_nutritionnelles,
-		allergènes
+		nutritional_values,
+		allergens
     )
     VALUES
     (
@@ -102,77 +102,77 @@ CREATE OR REPLACE FUNCTION insert_côté_salé("data" json) RETURNS côté_salé
         data->>'description',
         data->>'img',
         (data->>'price')::numeric,
-        data->>'mode_de_conservation',
+        data->>'method_of_conservation',
         data->>'composition',
-		data->>'valeurs_nutritionnelles',
-        data->>'allergènes'
+		data->>'nutritional_values',
+        data->>'allergens'
     )
 RETURNING *;
 $$ LANGUAGE sql STRICT;
 
-CREATE OR REPLACE FUNCTION updated_pains("data" json) RETURNS pains AS $$
+CREATE OR REPLACE FUNCTION updated_breads("data" json) RETURNS breads AS $$
 	
-	UPDATE pains
+	UPDATE breads
 	SET
 		title = COALESCE((data->>'title'),'title'),
         description = COALESCE((data->>'description'),'description'),
         img = COALESCE((data->>'img'),'img'),
         price = COALESCE((data->>'price')::numeric),
-        mode_de_conservation = COALESCE((data->>'mode_de_conservation'),'mode_de_conservation'),
+        method_of_conservation = COALESCE((data->>'method_of_conservation'),'method_of_conservation'),
         composition = COALESCE((data->>'composition'),'composition'),
-		valeurs_nutritionnelles = COALESCE((data->>'valeurs_nutritionnelles'),'valeurs_nutritionnelles'),
-		allergènes = COALESCE((data->>'allergènes'),'allergènes'),
+		nutritional_values = COALESCE((data->>'nutritional_values'),'nutritional_values'),
+		allergens = COALESCE((data->>'allergens'),'allergens'),
 		updated_at = now()
 	WHERE "id" = (data->>'id')::int
 RETURNING *;
 $$ LANGUAGE sql STRICT;
 
-CREATE OR REPLACE FUNCTION updated_pâtisserie("data" json) RETURNS pâtisserie AS $$
+CREATE OR REPLACE FUNCTION updated_pastries("data" json) RETURNS pastries AS $$
 	
-	UPDATE pâtisserie
+	UPDATE pastries
 	SET
 		title = COALESCE((data->>'title'),'title'),
         description = COALESCE((data->>'description'),'description'),
         img = COALESCE((data->>'img'),'img'),
         price = COALESCE((data->>'price')::numeric),
-        mode_de_conservation = COALESCE((data->>'mode_de_conservation'),'mode_de_conservation'),
+        method_of_conservation = COALESCE((data->>'method_of_conservation'),'method_of_conservation'),
         composition = COALESCE((data->>'composition'),'composition'),
-		valeurs_nutritionnelles = COALESCE((data->>'valeurs_nutritionnelles'),'valeurs_nutritionnelles'),
-		allergènes = COALESCE((data->>'allergènes'),'allergènes'),
+		nutritional_values = COALESCE((data->>'nutritional_values'),'nutritional_values'),
+		allergens = COALESCE((data->>'allergens'),'allergens'),
 		updated_at = now()
 	WHERE "id" = (data->>'id')::int
 RETURNING *;
 $$ LANGUAGE sql STRICT;
 
-CREATE OR REPLACE FUNCTION updated_viennoiserie("data" json) RETURNS viennoiserie AS $$
+CREATE OR REPLACE FUNCTION updated_breakfast_pastry("data" json) RETURNS breakfast_pastry AS $$
 	
-	UPDATE viennoiserie
+	UPDATE breakfast_pastry
 	SET
 		title = COALESCE((data->>'title'),'title'),
         description = COALESCE((data->>'description'),'description'),
         img = COALESCE((data->>'img'),'img'),
         price = COALESCE((data->>'price')::numeric),
-        mode_de_conservation = COALESCE((data->>'mode_de_conservation'),'mode_de_conservation'),
+        method_of_conservation = COALESCE((data->>'method_of_conservation'),'method_of_conservation'),
         composition = COALESCE((data->>'composition'),'composition'),
-		valeurs_nutritionnelles = COALESCE((data->>'valeurs_nutritionnelles'),'valeurs_nutritionnelles'),
-		allergènes = COALESCE((data->>'allergènes'),'allergènes'),
+		nutritional_values = COALESCE((data->>'nutritional_values'),'nutritional_values'),
+		allergens = COALESCE((data->>'allergens'),'allergens'),
 		updated_at = now()
 	WHERE "id" = (data->>'id')::int
 RETURNING *;
 $$ LANGUAGE sql STRICT;
 
-CREATE OR REPLACE FUNCTION updated_côté_salé("data" json) RETURNS côté_salé AS $$
+CREATE OR REPLACE FUNCTION updated_salty_side("data" json) RETURNS salty_side AS $$
 	
-	UPDATE côté_salé
+	UPDATE salty_side
 	SET
 		title = COALESCE((data->>'title'),'title'),
         description = COALESCE((data->>'description'),'description'),
         img = COALESCE((data->>'img'),'img'),
         price = COALESCE((data->>'price')::numeric),
-        mode_de_conservation = COALESCE((data->>'mode_de_conservation'),'mode_de_conservation'),
+        method_of_conservation = COALESCE((data->>'method_of_conservation'),'method_of_conservation'),
         composition = COALESCE((data->>'composition'),'composition'),
-		valeurs_nutritionnelles = COALESCE((data->>'valeurs_nutritionnelles'),'valeurs_nutritionnelles'),
-		allergènes = COALESCE((data->>'allergènes'),'allergènes'),
+		nutritional_values = COALESCE((data->>'nutritional_values'),'nutritional_values'),
+		allergens = COALESCE((data->>'allergens'),'allergens'),
 		updated_at = now()
 	WHERE "id" = (data->>'id')::int
 RETURNING *;

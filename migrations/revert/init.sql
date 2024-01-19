@@ -2,6 +2,7 @@
 
 BEGIN;
 
-DROP TABLE "pains", "pâtisserie", "viennoiserie","côté_salé";
+
+DROP TABLE "breads", "pastries", "breakfast_pastry","salty_side";
 
 COMMIT;

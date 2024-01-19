@@ -1,9 +1,9 @@
 -- Verify migrations:init on pg
 
 BEGIN;
-SELECT * FROM "pains";
-SELECT * FROM "pâtisserie";
-SELECT * FROM "viennoiserie";
-SELECT * FROM "côté salé";
+SELECT * FROM "breads";
+SELECT * FROM "pastries";
+SELECT * FROM "breakfast_pastry";
+SELECT * FROM "salty_side";
 
 ROLLBACK;
