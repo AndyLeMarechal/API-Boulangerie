@@ -3,3 +3,4 @@
 %uri=https://github.com/sqitchers/sqitch-intro/
 
 init 2024-01-19T13:30:01Z Boulangerie <student@teleporter> # Add schema for init database
+seeding 2024-01-19T13:49:54Z Boulangerie <student@teleporter> # Add schema for seeding database
