@@ -10,3 +10,4 @@ seeding_Our_Bakery 2024-01-19T15:45:56Z Boulangerie <student@teleporter> # Add s
 User 2024-01-19T16:19:21Z Boulangerie <student@teleporter> # Add schema for User for new table database
 seeding_User 2024-01-19T16:19:36Z Boulangerie <student@teleporter> # Add schema for seeding User
 function_our_bakery 2024-01-19T16:27:26Z Boulangerie <student@teleporter> # Add schema for function_our_bakery database
+user_function 2024-01-20T16:10:37Z Boulangerie <student@teleporter> # Add user function
