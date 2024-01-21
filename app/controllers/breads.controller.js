@@ -26,7 +26,6 @@ export default {
             if(bread.length == 0){
                 return res.status(400).json({error: 'Bread not found. Please verify the provided id.'});
             }
-            console.log(bread)
             res.status(200).json(bread)
         }
         catch(err) {
@@ -130,4 +129,4 @@ export default {
             res.status(500).json({error: '500 Internal Server Error'});
         }
     }
-}
+};
