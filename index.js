@@ -14,7 +14,7 @@ const app = express();
 
 
 // Add body parser
-app.use(express.urlencoded({ extended: true })); // Ce body parser est capable de parser les body au format application/x-www-urlencoded (eg, les body envoyé par un <form> HTML)
+// app.use(express.urlencoded({ extended: true })); // Ce body parser est capable de parser les body au format application/x-www-urlencoded (eg, les body envoyé par un <form> HTML)
 app.use(express.json()); // Ce body parser parse les body au format application/json
 
 // Configure Express app

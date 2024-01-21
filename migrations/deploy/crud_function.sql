@@ -29,6 +29,24 @@ CREATE OR REPLACE FUNCTION insert_breads("data" json) RETURNS breads AS $$
 RETURNING *;
 $$ LANGUAGE sql STRICT;
 
+
+CREATE OR REPLACE FUNCTION updated_breads("data" json) RETURNS breads AS $$
+	
+	UPDATE breads
+	SET
+		title = COALESCE((data->>'title'), title),
+        description = COALESCE((data->>'description'), description),
+        img = COALESCE((data->>'img'), img),
+        price = COALESCE((data->>'price')::numeric, price),
+        method_of_conservation = COALESCE((data->>'method_of_conservation'), method_of_conservation),
+        composition = COALESCE((data->>'composition'), composition),
+		nutritional_values = COALESCE((data->>'nutritional_values'), nutritional_values),
+		allergens = COALESCE((data->>'allergens'), allergens),
+		updated_at = now()
+	WHERE "id" = (data->>'id')::int
+RETURNING *;
+$$ LANGUAGE sql STRICT;
+
 CREATE OR REPLACE FUNCTION insert_pastries("data" json) RETURNS pastries AS $$
 
     INSERT INTO pastries
@@ -110,22 +128,6 @@ CREATE OR REPLACE FUNCTION insert_salty_side("data" json) RETURNS salty_side AS 
 RETURNING *;
 $$ LANGUAGE sql STRICT;
 
-CREATE OR REPLACE FUNCTION updated_breads("data" json) RETURNS breads AS $$
-	
-	UPDATE breads
-	SET
-		title = COALESCE((data->>'title'), title),
-        description = COALESCE((data->>'description'), description),
-        img = COALESCE((data->>'img'), img),
-        price = COALESCE((data->>'price')::numeric, price),
-        method_of_conservation = COALESCE((data->>'method_of_conservation'), method_of_conservation),
-        composition = COALESCE((data->>'composition'), composition),
-		nutritional_values = COALESCE((data->>'nutritional_values'), nutritional_values),
-		allergens = COALESCE((data->>'allergens'), allergens),
-		updated_at = now()
-	WHERE "id" = (data->>'id')::int
-RETURNING *;
-$$ LANGUAGE sql STRICT;
 
 CREATE OR REPLACE FUNCTION updated_pastries("data" json) RETURNS pastries AS $$
 	

@@ -22,9 +22,9 @@ export default {
     async createdBread(data) {
         const result = await client.query(
             'SELECT insert_breads($1)',
-            [data]
+            [data],
         );
-        return result.rows
+        return result.rows;
     },
 
     async updatedBread(data) {
