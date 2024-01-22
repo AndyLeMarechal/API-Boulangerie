@@ -7,8 +7,8 @@ export default {
 
     async getBreakFastPastrys(req, res) {
         try {
-            const BreakFastPastrys = await breakfastPastryDatamapper.getBreakfastPastrys();
-            res.status(200).json(BreakFastPastrys);
+            const breakFastPastrys = await breakfastPastryDatamapper.getBreakfastPastrys();
+            res.status(200).json(breakFastPastrys);
         }
         catch(err) {
             console.trace(err);
@@ -24,12 +24,12 @@ export default {
             return res.status(400).json({error: 'Bread ID should be a valid integer'});
             }
 
-            const BreakFastPastry = await breakfastPastryDatamapper.getBreakfastPastryById(id);
+            const breakFastPastry = await breakfastPastryDatamapper.getBreakfastPastryById(id);
 
-            if(BreakFastPastry.length == 0){
+            if(breakFastPastry.length == 0){
                 return res.status(400).json({error: 'Bread not found. Please verify the provided id.'});
             }
-            res.status(200).json(BreakFastPastry)
+            res.status(200).json(breakFastPastry)
         }
         catch(err) {
             console.trace(err);
@@ -54,10 +54,10 @@ export default {
 		        nutritional_values: req.body.nutritional_values,
 		        allergens: req.body.allergens,
             };
-            console.log(data);
+           
 
             const createdBreakFastPastry = await breakfastPastryDatamapper.createdBreakfastPastry(data);
-            console.log(createdBread);
+            
             res.status(201).json(createdBreakFastPastry);
 
         }
