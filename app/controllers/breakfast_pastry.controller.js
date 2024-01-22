@@ -75,8 +75,8 @@ export default {
             return res.status(400).json({error: 'Bread ID should be a valid integer'});
             }
 
-            const createdBreakFastPastrySchema = createdSchemaBreakFastPastry;
-            const { error } = createdBreakFastPastrySchema.validate(req.body);
+            const updatedBreakFastPastrySchema = updatedSchemaBreakFastPastry;
+            const { error } = updatedBreakFastPastrySchema.validate(req.body);
             if (error) { return res.status(400).json({ error: error.message }); }
 
             const data = {
