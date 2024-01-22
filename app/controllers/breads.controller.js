@@ -38,7 +38,7 @@ export default {
     },
 
     async createdBread(req, res) {
-        
+
         try {
             const createdBreadsSchema = createdSchemaBreads;
             const { error } = createdBreadsSchema.validate(req.body);
@@ -54,11 +54,11 @@ export default {
 		        nutritional_values: req.body.nutritional_values,
 		        allergens: req.body.allergens,
             };
-            console.log(data)
+            console.log(data);
 
             const createdBread = await breadsDatamapper.createdBread(data);
             console.log(createdBread);
-            res.status(200).json(createdBread);
+            res.status(201).json(createdBread);
 
         }
         catch(err) {

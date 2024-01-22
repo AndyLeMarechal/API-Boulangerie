@@ -17,7 +17,7 @@ CREATE OR REPLACE FUNCTION insert_breads("data" json) RETURNS breads AS $$
     )
     VALUES
     (
-        data->>'title',
+        data->>'title', 
         data->>'description',
         data->>'img',
         (data->>'price')::numeric,
