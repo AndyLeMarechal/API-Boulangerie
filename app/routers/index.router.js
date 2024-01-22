@@ -2,14 +2,16 @@ import { Router } from "express";
 
 
 import { router as breadsRouter } from "./breads.router.js";
-import { router as breakFastPastry } from "./breakfast_pastry.router.js";
+import { router as breakFastPastryRouter } from "./breakfast_pastry.router.js";
+import { router as pastriesRouter } from "./pastrie.router.js"
 
 export const router = Router();
 
 
 // Main API routes
 router.use(breadsRouter);
-router.use(breakFastPastry);
+router.use(breakFastPastryRouter);
+router.use(pastriesRouter);
 
 
 
