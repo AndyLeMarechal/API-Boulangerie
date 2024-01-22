@@ -2,6 +2,7 @@
 
 BEGIN;
 
--- XXX Add DDLs here.
+TRUNCATE insert_user;
+TRUNCATE updated_user;
 
 COMMIT;

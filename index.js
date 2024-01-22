@@ -1,9 +1,9 @@
 // Load environnement variables
 import "dotenv/config";
 
-
 // Import NPM dependencies
 import express from "express";
+import session from "express-session";
 
 
 // Import local dependencies
@@ -12,6 +12,14 @@ import { router as apiRouter } from "./app/routers/index.router.js";
 // Create Express App
 const app = express();
 
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: { secure: false },
+  })
+);
 
 // Add body parser
 app.use(express.urlencoded({ extended: true })); // Ce body parser est capable de parser les body au format application/x-www-urlencoded (eg, les body envoyé par un <form> HTML)

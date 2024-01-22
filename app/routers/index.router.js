@@ -5,6 +5,7 @@ import { router as breadsRouter } from "./breads.router.js";
 import { router as breakFastPastryRouter } from "./breakfast_pastry.router.js";
 import { router as pastriesRouter } from "./pastrie.router.js"
 import { router as saltySidesRouter } from "./salty_side.router.js"
+import { router as userRouter } from "./user.router.js"
 
 export const router = Router();
 
@@ -14,6 +15,7 @@ router.use(breadsRouter);
 router.use(breakFastPastryRouter);
 router.use(pastriesRouter);
 router.use(saltySidesRouter);
+router.use(userRouter);
 
 
 
