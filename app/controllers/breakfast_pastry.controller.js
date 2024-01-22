@@ -21,13 +21,13 @@ export default {
         try {
             const breakFastPastryId = Number.parseInt(req.params.id, 10);
             if(isNaN(breakFastPastryId)){
-            return res.status(400).json({error: 'Bread ID should be a valid integer'});
+            return res.status(400).json({error: 'Break fast pastry ID should be a valid integer'});
             }
 
             const breakFastPastry = await breakfastPastryDatamapper.getBreakfastPastryById(id);
 
             if(breakFastPastry.length == 0){
-                return res.status(400).json({error: 'Bread not found. Please verify the provided id.'});
+                return res.status(400).json({error: 'Break fast pastry not found. Please verify the provided id.'});
             }
             res.status(200).json(breakFastPastry)
         }
@@ -72,7 +72,7 @@ export default {
         try {
             const breakFastPastryId = Number.parseInt(req.params.id, 10);
             if(isNaN(breakFastPastryId)){
-            return res.status(400).json({error: 'Bread ID should be a valid integer'});
+            return res.status(400).json({error: 'Break fast pastry ID should be a valid integer'});
             }
 
             const updatedBreakFastPastrySchema = updatedSchemaBreakFastPastry;
@@ -94,7 +94,7 @@ export default {
             const updatedBreakFastPastry = await breakfastPastryDatamapper.updatedBreakfastPastry(data);
 
             if(updatedBreakFastPastry.length == 0){
-                return res.status(400).json({error: 'Bread not found. Please verify the provided id.'});
+                return res.status(400).json({error: 'Break fast pastry not found. Please verify the provided id.'});
             }
 
             res.status(200).json(updatedBreakFastPastry)
@@ -111,15 +111,24 @@ export default {
         try {
             const breakFastPastryId = Number.parseInt(req.params.id, 10);
             if(isNaN(breakFastPastryId)){
-            return res.status(400).json({error: 'Bread ID should be a valid integer'});
+            return res.status(400).json({error: 'Break fast pastry ID should be a valid integer'});
             }
+
+            const breakFastPastry = await breakfastPastryDatamapper.getBreakfastPastryById(id);
+
+            if(breakFastPastry.length == 0){
+                return res.status(400).json({error: 'Break fast pastry not found. Please verify the provided id.'})
+            };
 
             const deletedBreakFastPastry = await breakfastPastryDatamapper.deleteBreakfastPastry(id);
 
-            if(deletedBreakFastPastry.length == 0){
-                return res.status(400).json({error: 'Bread not found. Please verify the provided id.'});
+            
+            if(deletedBreakFastPastry) {
+                return res.status(200).json({message: `The Break fast pastry number ' ${breakFastPastry[0].id} ' is deleted`});
             }
-            res.end(204);
+            else {
+                return res.status(404).json({error: 'Whoops! \n 404'});
+            }
         }
         catch(err) {
             console.trace(err);

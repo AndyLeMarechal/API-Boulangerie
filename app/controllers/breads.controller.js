@@ -122,12 +122,20 @@ export default {
             return res.status(400).json({error: 'Bread ID should be a valid integer'});
             };
 
-            const deletedBread = await breadsDatamapper.deleteBread(id);
+            const bread = await breadsDatamapper.getBreadById(id);
 
-            if(deletedBread.length == 0){
+            if(bread.length == 0){
                 return res.status(400).json({error: 'Bread not found. Please verify the provided id.'});
             }
-            res.end(204);
+
+            const deletedBread = await breadsDatamapper.deleteBread(id);
+
+            if(deletedBread) {
+                return res.status(200).json({message: `The bread number ' ${breakFastPastry[0].id} ' is deleted`});
+            }
+            else {
+                return res.status(404).json({error: 'Whoops! \n 404'});
+            }
         }
         catch(err) {
             console.trace(err);

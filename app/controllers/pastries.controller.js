@@ -21,13 +21,13 @@ export default {
         try {
             const pastrieId = Number.parseInt(req.params.id, 10);
             if(isNaN(pastrieId)){
-            return res.status(400).json({error: 'Bread ID should be a valid integer'});
+            return res.status(400).json({error: 'Pastrie ID should be a valid integer'});
             }
 
             const pastrie = await pastriesDatamapper.getPastrieById(id);
 
             if(pastrie.length == 0){
-                return res.status(400).json({error: 'Bread not found. Please verify the provided id.'});
+                return res.status(400).json({error: 'Pastrie not found. Please verify the provided id.'});
             }
             res.status(200).json(pastrie)
         }
@@ -72,7 +72,7 @@ export default {
         try {
             const pastrieId = Number.parseInt(req.params.id, 10);
             if(isNaN(pastrieId)){
-            return res.status(400).json({error: 'Bread ID should be a valid integer'});
+            return res.status(400).json({error: 'Pastrie ID should be a valid integer'});
             }
 
             const updatedPastrieSchema = updatedSchemaPastrie;
@@ -94,7 +94,7 @@ export default {
             const updatedPastrie = await pastriesDatamapper.updatedPastrie(data);
 
             if(updatedPastrie.length == 0){
-                return res.status(400).json({error: 'Bread not found. Please verify the provided id.'});
+                return res.status(400).json({error: 'Pastrie not found. Please verify the provided id.'});
             }
 
             res.status(200).json(updatedPastrie)
@@ -111,15 +111,24 @@ export default {
         try {
             const pastrieId = Number.parseInt(req.params.id, 10);
             if(isNaN(pastrieId)){
-            return res.status(400).json({error: 'Bread ID should be a valid integer'});
+            return res.status(400).json({error: 'Pastrie ID should be a valid integer'});
+            }
+
+            const pastrie = await pastriesDatamapper.getPastrieById(id);
+
+            if(pastrie.length == 0){
+                return res.status(400).json({error: 'Pastrie not found. Please verify the provided id.'});
             }
 
             const deletedPastrie = await pastriesDatamapper.deletePastrie(id);
 
-            if(deletedPastrie.length == 0){
-                return res.status(400).json({error: 'Bread not found. Please verify the provided id.'});
+
+            if(deletedPastrie) {
+                return res.status(200).json({message: `The pastrie number ' ${pastrie[0].id} ' is deleted`});
             }
-            res.end(204);
+            else {
+                return res.status(404).json({error: 'Whoops! \n 404'});
+            }
         }
         catch(err) {
             console.trace(err);
