@@ -86,7 +86,7 @@ export default {
             if (error) { return res.status(400).json({ error: error.message }); }
 
             const data = {
-                id: id,
+                id,
                 title: req.body.title,
                 description: req.body.description,
                 img: req.body.img,

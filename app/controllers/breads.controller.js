@@ -54,7 +54,14 @@ export default {
 		        nutritional_values: req.body.nutritional_values,
 		        allergens: req.body.allergens,
             };
-            console.log(data);
+            
+            const title = req.body.title;
+            const existingBreadByTitle = await breadsDatamapper.getBreadByTitle(title);
+          
+          if (existingBreadByTitle.length != 0 ) {
+
+            return res.status(400).json({error: 'Title is already in use'});
+          }
 
             const createdBread = await breadsDatamapper.createdBread(data);
             console.log(createdBread);
@@ -69,14 +76,6 @@ export default {
 
     async updatedBread(req, res) {
         const id = req.params.id;
-        const title = req.body.title;
-        const description = req.body.description;
-        const img = req.body.img;
-        const price = req.body.price;
-        const methodOfConservation = req.body.method_of_conservation;
-        const composition = req.body.composition;
-		const nutritionalValues = req.body.nutritional_values;
-		const allergens = req.body.allergens;
         try {
             const breadId = Number.parseInt(req.params.id, 10);
             if(isNaN(breadId)){
@@ -89,15 +88,23 @@ export default {
 
             const data = {
                 id,
-                title,
-                description,
-                img,
-                price,
-                methodOfConservation,
-                composition,
-                nutritionalValues,
-                allergens
+                title: req.body.title,
+                description: req.body.description,
+                img: req.body.img,
+                price: req.body.price,
+                method_of_conservation: req.body.method_of_conservation,
+                composition: req.body.composition,
+		        nutritional_values: req.body.nutritional_values,
+		        allergens: req.body.allergens,
             };
+
+            const title = req.body.title;
+            const existingBreadByTitle = await breadsDatamapper.getBreadByTitle(title);
+          
+          if (existingBreadByTitle.length != 0 ) {
+
+            return res.status(400).json({error: 'Title is already in use'});
+          }
 
             const updatedBread = await breadsDatamapper.updatedBread(data);
 

@@ -19,6 +19,15 @@ export default {
         return result.rows;
     },
 
+    async getSaltySideByTitle(title) {
+        const query = {
+            text: 'SELECT * FROM "salty_side" WHERE "title" = $1',
+            values: [title]
+        };
+        const result = await client.query(query);
+        return result.rows;
+    },
+
     async createdSaltySide(data) {
         const result = await client.query(
             'SELECT insert_salty_side($1)',

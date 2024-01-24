@@ -19,6 +19,15 @@ export default {
         return result.rows;
     },
 
+    async getPastrieByTitle(title) {
+        const query = {
+            text: 'SELECT * FROM "pastries" WHERE "title" = $1',
+            values: [title]
+        };
+        const result = await client.query(query);
+        return result.rows;
+    },
+
     async createdPastrie(data) {
         const result = await client.query(
             'SELECT insert_pastries($1)',

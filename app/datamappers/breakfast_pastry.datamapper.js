@@ -19,6 +19,15 @@ export default {
         return result.rows;
     },
 
+    async getBreakfastPastryByTitle(title) {
+        const query = {
+            text: 'SELECT * FROM "breakfast_pastry" WHERE "title" = $1',
+            values: [title]
+        };
+        const result = await client.query(query);
+        return result.rows;
+    },
+
     async createdBreakfastPastry(data) {
         const result = await client.query(
             'SELECT insert_breakfast_pastry($1)',

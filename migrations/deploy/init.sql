@@ -6,7 +6,7 @@ BEGIN;
 CREATE TABLE "breads" (
     "id" int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "title" text NOT NULL UNIQUE,
-    "description" text NOT NULL UNIQUE,
+    "description" text NOT NULL ,
     "img" TEXT,
     "price" numeric NOT NULL,
     "method_of_conservation" text NOT NULL ,
@@ -20,7 +20,7 @@ CREATE TABLE "breads" (
 CREATE TABLE "pastries" (
     "id" int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "title" text NOT NULL UNIQUE,
-    "description" text NOT NULL UNIQUE,
+    "description" text NOT NULL ,
     "img" TEXT,
     "price" numeric NOT NULL,
     "method_of_conservation" text NOT NULL ,
@@ -34,7 +34,7 @@ CREATE TABLE "pastries" (
 CREATE TABLE "breakfast_pastry" (
     "id" int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "title" text NOT NULL UNIQUE,
-    "description" text NOT NULL UNIQUE,
+    "description" text NOT NULL ,
     "img" TEXT,
     "price" numeric NOT NULL,
     "method_of_conservation" text NOT NULL ,
@@ -48,7 +48,7 @@ CREATE TABLE "breakfast_pastry" (
 CREATE TABLE "salty_side" (
     "id" int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "title" text NOT NULL UNIQUE,
-    "description" text NOT NULL UNIQUE,
+    "description" text NOT NULL ,
     "img" TEXT,
     "price" numeric NOT NULL,
     "method_of_conservation" text NOT NULL ,

@@ -54,6 +54,14 @@ export default {
 		        nutritional_values: req.body.nutritional_values,
 		        allergens: req.body.allergens,
             };
+
+            const title = req.body.title;
+            const existingPastrieByTitle = await pastriesDatamapper.getPastrieByTitle(title);
+          
+          if (existingPastrieByTitle.length != 0 ) {
+
+            return res.status(400).json({error: 'Title is already in use'});
+          }
            
 
             const createdPastrie = await pastriesDatamapper.createdPastrie(data);
@@ -80,6 +88,7 @@ export default {
             if (error) { return res.status(400).json({ error: error.message }); }
 
             const data = {
+                id,
                 title: req.body.title,
                 description: req.body.description,
                 img: req.body.img,
@@ -88,8 +97,16 @@ export default {
                 composition: req.body.composition,
 		        nutritional_values: req.body.nutritional_values,
 		        allergens: req.body.allergens,
-                id
+                
             };
+
+            const title = req.body.title;
+            const existingPastrieByTitle = await pastriesDatamapper.getPastrieByTitle(title);
+          
+          if (existingPastrieByTitle.length != 0 ) {
+
+            return res.status(400).json({error: 'Title is already in use'});
+          }
 
             const updatedPastrie = await pastriesDatamapper.updatedPastrie(data);
 

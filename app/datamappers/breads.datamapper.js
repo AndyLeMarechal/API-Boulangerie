@@ -19,6 +19,15 @@ export default {
         return result.rows;
     },
 
+    async getBreadByTitle(title) {
+        const query = {
+            text: 'SELECT * FROM "breads" WHERE "title" = $1',
+            values: [title]
+        };
+        const result = await client.query(query);
+        return result.rows;
+    },
+
     async createdBread(data) {
         const result = await client.query(
             'SELECT insert_breads($1)',
