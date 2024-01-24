@@ -6,8 +6,7 @@ export default Joi.object({
   username: Joi.string()
     .alphanum()
     .min(3)
-    .max(30)
-    .required(),
+    .max(30),
 
   password: joiPassword
     .string()
@@ -32,19 +31,16 @@ export default Joi.object({
   firstname: Joi.string()
     .alphanum()
     .min(3)
-    .max(30)
-    .required(),
+    .max(30),
 
   lastname: Joi.string()
     .alphanum()
     .min(3)
-    .max(30)
-    .required(),
+    .max(30),
 
   address: Joi.string()
     .min(3)
-    .max(200)
-    .required(),
+    .max(200),
 
   role: Joi.string()
     .alphanum()

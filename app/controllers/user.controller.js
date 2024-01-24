@@ -4,6 +4,7 @@ import updatedUserSchema from "../validations/schemas/updated.schema.user.js";
 import userDatamapper from "../datamappers/user.datamapper.js";
 
 export default {
+
   async getUsers(req, res) {
     try{
       const users = await userDatamapper.getUsers();
@@ -39,7 +40,7 @@ export default {
   },
   
   async createdUser(req,res){
-    
+          
       try{
           const createUserSchema = createdUserSchema;
         
@@ -51,11 +52,12 @@ export default {
           }
           
           const email = req.body.email;
-          const username = req.body.username
+          const username = req.body.username;
+
+          const existingUserByUsername = await userDatamapper.getUserByUsername(username);
+          const existingUserByEmail = await userDatamapper.getUserByEmail(email);
           
-          const existingUser = await userDatamapper.getUserByEmail(email);
-        
-          if (existingUser[0].email == email || existingUser[0].username == username) {
+          if (existingUserByEmail.length != 0 || existingUserByUsername.length != 0) {
 
             return res.status(400).json({error: 'Email or username is already in use'});
           }
@@ -71,7 +73,6 @@ export default {
             role: "registered",
           });
           res.status(201).json(createdUser);
-          res.end()
         }
         catch(error){
           console.error(error);
@@ -102,32 +103,30 @@ export default {
         return res.status(400).json({error: 'Passwords do not match'});
       }
   
-      const email = req.body.email;
-  
-      const existingUser = await userDatamapper.getUserByEmail(email)
-          if (existingUser) {
-            return res.status(400).json({error: 'Email is already in use'});
-          };
-  
+          
+      const existingUserById = await userDatamapper.getUserById(id);
+          
       const isValidPassword = await bcrypt.compare(
         req.body.password,
-        existingUser.password
+        existingUserById[0].password
       );
   
-      if(!isValidPassword) {
+      if(isValidPassword) {
         return res.status(400).json({error: 'Password is already in use'});
       }
       const hashedPassword = await bcrypt.hash(req.body.password, 10);
   
-      const updatedUser = await user.update({
+      const updatedUser = await userDatamapper.updatedUser({
         username: req.body.username,
         email: req.body.email,
         password: hashedPassword, 
         firstname: req.body.firstname,
         lastname: req.body.lastname,
         address: req.body.address, 
-        role: role || '',
+        role: req.body.role || '',
+        id: id
       });
+
       res.status(200).json(updatedUser);
     }
     catch(error){

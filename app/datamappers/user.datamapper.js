@@ -16,7 +16,7 @@ export default {
             values: [id]
         };
         const result = await client.query(query);
-        console.log(result)
+        
         return result.rows;
     },
 
@@ -26,7 +26,16 @@ export default {
             values: [email]
         };
         const result = await client.query(query);
-        console.log(result.rows[0])
+        
+        return result.rows;
+    },
+
+    async getUserByUsername(username) {
+        const query = {
+            text: 'SELECT * FROM "user" WHERE "username" = $1',
+            values: [username]
+        };
+        const result = await client.query(query);
         return result.rows;
     },
 
