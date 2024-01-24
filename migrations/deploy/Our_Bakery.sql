@@ -5,7 +5,7 @@ BEGIN;
 CREATE TABLE "our_bakery" (
     "id" int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "title" text NOT NULL UNIQUE,
-    "description" text NOT NULL UNIQUE,
+    "description" text NOT NULL ,
     "img" TEXT,
     "hourly" TEXT,
     "city" TEXT,
